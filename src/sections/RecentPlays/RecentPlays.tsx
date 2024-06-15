@@ -93,13 +93,6 @@ export default function RecentPlays() {
       <GambaUi.Button main onClick={() => window.open(`${EXPLORER_URL}/platform/${PLATFORM_CREATOR_ADDRESS.toString()}`)}>
         🚀 Explorer
       </GambaUi.Button>
-      <img src="https://assets.codepen.io/197359/kitten-peek-transparent.png" style="
-    position: absolute;
-    width: 20%;
-    right: -15%;
-    top: 60%;
-">
     </Container>
-
   )
 }
