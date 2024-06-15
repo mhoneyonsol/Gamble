@@ -46,12 +46,12 @@ const Logo = styled(NavLink)`
     height: 180%;
   }
 
-  @media (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     & > img {
-      height: 100%;
+      height: 100% !important;
     }
   }
-`
+`;
 
 export default function Header() {
   const pool = useCurrentPool()
