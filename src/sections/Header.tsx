@@ -42,7 +42,7 @@ const Logo = styled(NavLink)`
   height: 35px;
   margin: 0 10px;
   & > img {
-    height: 100%;
+    height: 180%;
   }
 `
 
@@ -87,7 +87,7 @@ export default function Header() {
       <StyledHeader>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Logo to="/">
-            <img style="zoom:180%" alt="Logo" src="https://i.imgur.com/KtF3RkQ.png" />
+            <img alt="Logo" src="https://i.imgur.com/KtF3RkQ.png" />
           </Logo>
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', position: 'relative' }}>
