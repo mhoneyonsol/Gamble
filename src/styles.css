@@ -65,10 +65,6 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--gamba-ui-primary-color);
 }
 
-.bcmXME > img {
-    height: 600%!important;
-}
-
 .wallet-adapter-button.wallet-adapter-button-trigger {
   height: 40px;
   line-height: 40px;
