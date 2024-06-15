@@ -1,4 +1,4 @@
-fimport React from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Buttons = styled.div`
@@ -70,14 +70,7 @@ const Welcome = styled.div`
   flex-direction: column;
   padding: 20px;
   filter: drop-shadow(0 4px 3px rgba(0,0,0,.07)) drop-shadow(0 2px 2px rgba(0,0,0,.06));
-      background-image: url(https://i.imgur.com/f7B6pf7.png);
-    background-size: 40%;
-    background-repeat: no-repeat;
-    background-color: #fffffff7;
-    animation: none;
-    background-position-x: 57%;
-    color: black;
-    
+
   & img {
     animation-duration: 5s;
     animation-iteration-count: infinite;
