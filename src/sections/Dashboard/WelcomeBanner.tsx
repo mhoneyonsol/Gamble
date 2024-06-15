@@ -58,23 +58,23 @@ const Welcome = styled.div`
     }
   }
 
-  backdrop-filter: blur(177px);
-    background-image: url(https://i.imgur.com/f7B6pf7.png);
-    background-size: 40%;
+    
+    background-image: url(https://i.imgur.com/ToeEATM.png);
+    background-size: cover;
     background-repeat: no-repeat;
-    background-color: #ffffff;
-    animation: none;
+    background-color: rgb(255, 255, 255);
+    animation: auto ease 0s 1 normal none running none;
     background-position-x: 57%;
-    color: black;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-  filter: drop-shadow(0 4px 3px rgba(0,0,0,.07)) drop-shadow(0 2px 2px rgba(0,0,0,.06));
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    filter: drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px);
 
   & img {
     animation-duration: 5s;
@@ -113,13 +113,13 @@ export function WelcomeBanner() {
         </p>
       </div>
       <Buttons>
-        <button onClick={() => window.open('https://v2.gamba.so/', '_blank')}>
+        <button onClick={() => window.open('https://splforge.vercel.app', '_blank')}>
           🚀 Create token
         </button>
-        <button onClick={() => window.open('https://github.com/gamba-labs/gamba', '_blank')}>
+        <button onClick={() => window.open('', '_blank')}>
           👨‍💻 Token bridge
         </button>
-        <button onClick={() => window.open('https://discord.gg/HSTtFFwR', '_blank')}>
+        <button onClick={() => window.open('', '_blank')}>
           💬 Telegram
         </button>
       </Buttons>
