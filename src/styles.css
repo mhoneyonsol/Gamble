@@ -50,6 +50,17 @@ body::-webkit-scrollbar {
   width: 4px;
 }
 
+.kYDXOo {
+    backdrop-filter: blur(177px);
+    background-image: url(https://i.imgur.com/f7B6pf7.png);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    animation: none;
+    background-position-x: 57%;
+    color: black;
+}
+
 body::-webkit-scrollbar-thumb {
   background-color: var(--gamba-ui-primary-color);
 }
