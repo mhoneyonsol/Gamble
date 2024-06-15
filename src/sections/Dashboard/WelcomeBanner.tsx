@@ -77,6 +77,7 @@ const Welcome = styled.div`
     animation: none;
     background-position-x: 57%;
     color: black;
+    
   & img {
     animation-duration: 5s;
     animation-iteration-count: infinite;
