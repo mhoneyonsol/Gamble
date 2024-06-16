@@ -123,7 +123,7 @@ export function WelcomeBanner() {
           👨‍💻 Token bridge
         </button>
         <button onClick={() => window.open('', '_blank')}>
-          💬 Telegram
+          💬 Join Telegram
         </button>
       </Buttons>
     </Welcome>
