@@ -100,6 +100,10 @@ const Welcome = styled.div`
     & > div {
       padding: 40px;
     }
+
+     @media (max-width: 600px) {
+    margin-top:30px;
+    }
   }
 `
 
