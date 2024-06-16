@@ -58,26 +58,37 @@ const Welcome = styled.div`
     }
   }
 
-    
-    background-image: url(https://i.imgur.com/ToeEATM.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: auto ease 0s 1 normal none running none;
-    background-position-x: 57%;
-    color: white;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 20px;
-    filter: drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px);
-
-     @media (max-width: 600px) {
-    margin-top:30px;
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
     }
+    50% {
+      transform: translateX(-20px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  background-image: url(https://i.imgur.com/ToeEATM.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: auto ease 0s 1 normal none running none;
+  background-position-x: 57%;
+  color: white;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px);
+
+  @media (max-width: 600px) {
+    margin-top: 30px;
+  }
 
   & img {
     animation-duration: 5s;
@@ -104,13 +115,18 @@ const Welcome = styled.div`
       padding: 40px;
     }
   }
+
+  & .wave {
+    display: inline-block;
+    animation: wave 2s infinite;
+  }
 `
 
 export function WelcomeBanner() {
   return (
     <Welcome>
       <div>
-        <h1>Welcome to SPL Gamble 👋</h1>
+        <h1>Welcome to SPL Gamble <span className="wave">👋</span></h1>
         <p>
           A fair, simple and decentralized casino on Solana.
         </p>
