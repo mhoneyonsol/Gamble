@@ -77,7 +77,7 @@ const Welcome = styled.div`
     filter: drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px);
 
      @media (max-width: 600px) {
-    margin-top:70px;
+    margin-top:30px;
     }
 
   & img {
