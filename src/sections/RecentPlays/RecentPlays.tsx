@@ -1,7 +1,6 @@
 import { BPS_PER_WHOLE, GambaTransaction } from 'gamba-core-v2'
-import { GambaUi, TokenValue, useTokenMeta } from 'gamba-react-ui-v2'
+import { TokenValue, useTokenMeta } from 'gamba-react-ui-v2'
 import React from 'react'
-import { EXPLORER_URL, PLATFORM_CREATOR_ADDRESS } from '../../constants'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { extractMetadata } from '../../utils'
 import { Container, Jackpot, Profit, Recent, Skeleton } from './RecentPlays.styles'
@@ -39,16 +38,14 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
   return (
     <>
       <img src={game?.meta.image} style={{ height: '1.5em' }} />
-      <div style={{ color: 'var(--gamba-ui-primary-color)' }}>
+      <div style={{ color: '#a079ff' }}>
         {data.user.toBase58().substring(0, 4)}...
       </div>
       {md && (profit >= 0 ? ' won ' : ' lost ')}
       <Profit $win={profit > 0}>
-        <img src={token.image} height="20px" style={{ borderRadius: '50%' }} />
+        <img src={token.image} height="15px" />
         <TokenValue amount={Math.abs(profit)} mint={data.tokenMint} />
-        {/* {(token.usdPrice * profit / (10 ** token.decimals)).toLocaleString()} USD */}
       </Profit>
-
       {md && (
         <>
           {profit > 0 && (
@@ -68,7 +65,7 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
 }
 
 export default function RecentPlays() {
-  const events = useRecentPlays({ showAllPlatforms: false })
+  const events = useRecentPlays()
   const [selectedGame, setSelectedGame] = React.useState<GambaTransaction<'GameSettled'>>()
   const md = useMediaQuery('md')
 
@@ -77,7 +74,7 @@ export default function RecentPlays() {
       {selectedGame && (
         <ShareModal event={selectedGame} onClose={() => setSelectedGame(undefined)} />
       )}
-      {!events.length && Array.from({ length: 10 }).map((_, i) => (
+      {!events.length && Array.from({ length: 5 }).map((_, i) => (
         <Skeleton key={i} />
       ))}
       {events.map(
@@ -90,9 +87,6 @@ export default function RecentPlays() {
           </Recent>
         ),
       )}
-      <GambaUi.Button main onClick={() => window.open(`${EXPLORER_URL}/platform/${PLATFORM_CREATOR_ADDRESS.toString()}`)}>
-        🚀 Explorer
-      </GambaUi.Button>
     </Container>
   )
 }
