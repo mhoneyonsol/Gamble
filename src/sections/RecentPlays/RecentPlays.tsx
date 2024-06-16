@@ -1,6 +1,6 @@
 import { BPS_PER_WHOLE, GambaTransaction } from 'gamba-core-v2'
 import { GambaUi, TokenValue, useTokenMeta } from 'gamba-react-ui-v2'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { EXPLORER_URL, PLATFORM_CREATOR_ADDRESS } from '../../constants'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { extractMetadata } from '../../utils'
@@ -46,6 +46,7 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
       <Profit $win={profit > 0}>
         <img src={token.image} height="20px" style={{ borderRadius: '50%' }} />
         <TokenValue amount={Math.abs(profit)} mint={data.tokenMint} />
+        {/* {(token.usdPrice * profit / (10 ** token.decimals)).toLocaleString()} USD */}
       </Profit>
 
       {md && (
@@ -70,18 +71,6 @@ export default function RecentPlays() {
   const events = useRecentPlays({ showAllPlatforms: false })
   const [selectedGame, setSelectedGame] = React.useState<GambaTransaction<'GameSettled'>>()
   const md = useMediaQuery('md')
-  const [genesisEvents, setGenesisEvents] = useState<GambaTransaction<'GameSettled'>[]>([])
-
-  useEffect(() => {
-    async function fetchGenesisEvents() {
-      // Replace this URL with the actual endpoint to fetch transactions from the Genesis platform
-      const response = await fetch('https://api.gamba.so/genesis-transactions')
-      const data = await response.json()
-      setGenesisEvents(data)
-    }
-    
-    fetchGenesisEvents()
-  }, [])
 
   return (
     <Container>
@@ -101,21 +90,8 @@ export default function RecentPlays() {
           </Recent>
         ),
       )}
-      {genesisEvents.map(
-        (tx) => (
-          <Recent key={tx.signature} onClick={() => setSelectedGame(tx)}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '.5em' }}>
-              <RecentPlay event={tx} />
-            </div>
-            <TimeDiff time={tx.time} suffix={md ? 'ago' : ''} />
-          </Recent>
-        ),
-      )}
       <GambaUi.Button main onClick={() => window.open(`${EXPLORER_URL}/platform/${PLATFORM_CREATOR_ADDRESS.toString()}`)}>
         🚀 Explorer
-      </GambaUi.Button>
-      <GambaUi.Button main onClick={() => { /* Implement logic if needed */ }}>
-        🕹️ Genesis Platform
       </GambaUi.Button>
     </Container>
   )
