@@ -59,15 +59,13 @@ const Welcome = styled.div`
   }
 
   @keyframes wave {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-20px);
-    }
-    100% {
-      transform: translateX(0);
-    }
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(14deg); }
+    30% { transform: rotate(-8deg); }
+    40% { transform: rotate(14deg); }
+    50% { transform: rotate(-4deg); }
+    60% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
   }
 
   background-image: url(https://i.imgur.com/ToeEATM.png);
@@ -119,6 +117,7 @@ const Welcome = styled.div`
   & .wave {
     display: inline-block;
     animation: wave 2s infinite;
+    transform-origin: 70% 70%;
   }
 `
 
