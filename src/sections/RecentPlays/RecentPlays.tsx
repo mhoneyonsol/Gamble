@@ -1,6 +1,6 @@
 import { BPS_PER_WHOLE, GambaTransaction } from 'gamba-core-v2'
 import { GambaUi, TokenValue, useTokenMeta } from 'gamba-react-ui-v2'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { EXPLORER_URL, PLATFORM_CREATOR_ADDRESS } from '../../constants'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { extractMetadata } from '../../utils'
@@ -68,40 +68,19 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
 }
 
 export default function RecentPlays() {
-  const [events, setEvents] = useState<GambaTransaction<'GameSettled'>[]>([])
-  const [genesisEvents, setGenesisEvents] = useState<GambaTransaction<'GameSettled'>[]>([])
-  const [selectedGame, setSelectedGame] = useState<GambaTransaction<'GameSettled'>>()
-  const [showGenesis, setShowGenesis] = useState(false)
+  const events = useRecentPlays({ showAllPlatforms: false })
+  const [selectedGame, setSelectedGame] = React.useState<GambaTransaction<'GameSettled'>>()
   const md = useMediaQuery('md')
-
-  useEffect(() => {
-    async function fetchRecentPlays() {
-      const events = await useRecentPlays({ showAllPlatforms: false })
-      setEvents(events)
-    }
-
-    async function fetchGenesisPlays() {
-      // Replace this URL with the actual endpoint to fetch transactions from the Genesis platform
-      const response = await fetch('https://api.gamba.so/genesis-transactions')
-      const data = await response.json()
-      setGenesisEvents(data)
-    }
-
-    fetchRecentPlays()
-    fetchGenesisPlays()
-  }, [])
-
-  const displayedEvents = showGenesis ? genesisEvents : events
 
   return (
     <Container>
       {selectedGame && (
         <ShareModal event={selectedGame} onClose={() => setSelectedGame(undefined)} />
       )}
-      {!displayedEvents.length && Array.from({ length: 10 }).map((_, i) => (
+      {!events.length && Array.from({ length: 10 }).map((_, i) => (
         <Skeleton key={i} />
       ))}
-      {displayedEvents.map(
+      {events.map(
         (tx) => (
           <Recent key={tx.signature} onClick={() => setSelectedGame(tx)}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '.5em' }}>
@@ -111,11 +90,8 @@ export default function RecentPlays() {
           </Recent>
         ),
       )}
-      <GambaUi.Button main onClick={() => setShowGenesis(false)}>
-        🚀 Current Platform
-      </GambaUi.Button>
-      <GambaUi.Button main onClick={() => setShowGenesis(true)}>
-        🕹️ Genesis Platform
+      <GambaUi.Button main onClick={() => window.open(`${EXPLORER_URL}/platform/${PLATFORM_CREATOR_ADDRESS.toString()}`)}>
+        🚀 Explorer
       </GambaUi.Button>
     </Container>
   )
