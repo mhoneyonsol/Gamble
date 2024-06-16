@@ -7,7 +7,37 @@ import { Container, Jackpot, Profit, Recent, Skeleton } from './RecentPlays.styl
 import { ShareModal } from './ShareModal'
 import { useRecentPlays } from './useRecentPlays'
 
-function TimeDiff({ time, suffix = 'ago' }: {time: number, suffix?: string}) {
+// Mock useRecentPlays to return 10 fake win transactions
+const useRecentPlaysMock = () => {
+  const now = Date.now()
+  return Array.from({ length: 10 }).map((_, i) => ({
+    signature: `fake_signature_${i}`,
+    time: now - i * 60000, // spread out over the past 10 minutes
+    data: {
+      tokenMint: 'fake_token_mint',
+      user: {
+        toBase58: () => `fake_user_${i}`
+      },
+      bet: [BPS_PER_WHOLE, BPS_PER_WHOLE * 2, BPS_PER_WHOLE * 3],
+      resultIndex: {
+        toNumber: () => 2 // assume they won the third bet
+      },
+      wager: {
+        toNumber: () => 1000 // assume a wager of 1000 units
+      },
+      jackpotPayoutToUser: {
+        toNumber: () => 0 // no jackpot payout
+      }
+    },
+    game: {
+      meta: {
+        image: 'https://via.placeholder.com/24' // placeholder image
+      }
+    }
+  }))
+}
+
+function TimeDiff({ time, suffix = 'ago' }: { time: number, suffix?: string }) {
   const diff = (Date.now() - time)
   return React.useMemo(() => {
     const seconds = Math.floor(diff / 1000)
@@ -23,7 +53,7 @@ function TimeDiff({ time, suffix = 'ago' }: {time: number, suffix?: string}) {
   }, [diff])
 }
 
-function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
+function RecentPlay({ event }: { event: GambaTransaction<'GameSettled'> }) {
   const data = event.data
   const token = useTokenMeta(data.tokenMint)
   const md = useMediaQuery('md')
@@ -65,7 +95,7 @@ function RecentPlay({ event }: {event: GambaTransaction<'GameSettled'>}) {
 }
 
 export default function RecentPlays() {
-  const events = useRecentPlays()
+  const events = useRecentPlaysMock() // use the mock function instead of the real hook
   const [selectedGame, setSelectedGame] = React.useState<GambaTransaction<'GameSettled'>>()
   const md = useMediaQuery('md')
 
