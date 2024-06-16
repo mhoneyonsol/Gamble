@@ -67,7 +67,7 @@ export default function TokenSelect() {
     setVisible(false)
     if (
       import.meta.env.VITE_REAL_PLAYS_DISABLED &&
-      !pool.token.equals(FAKE_TOKEN_MINT)
+      !pool.token.equals('So11111111111111111111111111111111111111112')
     ) {
       setWarning(true)
     }

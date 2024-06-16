@@ -48,7 +48,6 @@ const Logo = styled(NavLink)`
 
   @media screen and (max-width: 600px) {
     & > img {
-      height: 80% !important;
       content: url('https://i.imgur.com/J9ojBcN.png');
     }
   }
