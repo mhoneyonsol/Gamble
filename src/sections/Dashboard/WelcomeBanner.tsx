@@ -102,7 +102,7 @@ const Welcome = styled.div`
     }
 
      @media (max-width: 600px) {
-    margin-top:30px;
+    margin-top:70px;
     }
   }
 `
