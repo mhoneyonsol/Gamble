@@ -49,6 +49,7 @@ const Logo = styled(NavLink)`
   @media screen and (max-width: 600px) {
     & > img {
       content: url('https://i.imgur.com/J9ojBcN.png');
+      height: 90%;
     }
   }
 `

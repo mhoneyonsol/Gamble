@@ -6,7 +6,7 @@ export const RPC_ENDPOINT = import.meta.env.VITE_RPC_ENDPOINT ?? 'https://api.ma
 
 // Solana address that will receive fees when somebody plays on this platform
 export const PLATFORM_CREATOR_ADDRESS = new PublicKey(
-  'V2grJiwjs25iJYqumbHyKo5MTK7SFqZSdmoRaj8QWb9',
+  'E6Bhkv6g7gibVZ4M2oX4AFjPVC1YQNu6dzTom5Q7Tvmq',
 )
 
 // Gamba explorer URL - Appears in RecentPlays
@@ -44,7 +44,7 @@ export const POOLS = [
 ]
 
 // The default token to be selected
-export const DEFAULT_POOL = POOLS[0]
+export const DEFAULT_POOL = POOLS[1]
 
 /**
  * List of token metadata for the supported tokens
