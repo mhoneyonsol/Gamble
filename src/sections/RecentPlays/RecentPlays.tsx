@@ -16,7 +16,7 @@ const useRecentPlaysMock = () => {
     data: {
       tokenMint: 'fake_token_mint',
       user: {
-        toBase58: () => `B58UserMock${i}` // valid base58 strings
+        toBase58: () => `fake_user_${i}`
       },
       bet: [BPS_PER_WHOLE, BPS_PER_WHOLE * 2, BPS_PER_WHOLE * 3],
       resultIndex: {
