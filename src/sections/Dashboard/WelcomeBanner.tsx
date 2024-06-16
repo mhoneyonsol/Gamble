@@ -122,6 +122,10 @@ const Welcome = styled.div`
 `
 
 export function WelcomeBanner() {
+  const handleComingSoon = () => {
+    alert('Available soon bro');
+  }
+
   return (
     <Welcome>
       <div>
@@ -134,10 +138,10 @@ export function WelcomeBanner() {
         <button onClick={() => window.open('https://splforge.vercel.app', '_blank')}>
           🚀 Create token
         </button>
-        <button onClick={() => window.open('', '_blank')}>
+        <button onClick={handleComingSoon}>
           👨‍💻 Token bridge
         </button>
-        <button onClick={() => window.open('', '_blank')}>
+        <button onClick={handleComingSoon}>
           💬 Join Telegram
         </button>
       </Buttons>
