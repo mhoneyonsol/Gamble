@@ -76,6 +76,10 @@ const Welcome = styled.div`
     padding: 20px;
     filter: drop-shadow(rgba(0, 0, 0, 0.07) 0px 4px 3px) drop-shadow(rgba(0, 0, 0, 0.06) 0px 2px 2px);
 
+     @media (max-width: 600px) {
+    margin-top:70px;
+    }
+
   & img {
     animation-duration: 5s;
     animation-iteration-count: infinite;
@@ -99,10 +103,6 @@ const Welcome = styled.div`
     padding: 0;
     & > div {
       padding: 40px;
-    }
-
-     @media (max-width: 600px) {
-    margin-top:70px;
     }
   }
 `
