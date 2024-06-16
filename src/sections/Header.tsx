@@ -97,7 +97,11 @@ export default function Header() {
             <img alt="Logo" src="https://i.imgur.com/KtF3RkQ.png" />
           </Logo>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', position: 'relative' }}>
+        <div style={@media only screen and (max-width: 600px) {
+          zoom:80%;
+   {
+    font-size:3em!important;
+  } { display: 'flex', gap: '10px', alignItems: 'center', position: 'relative' } }>
           {pool.jackpotBalance > 0 && (
             <Bonus onClick={() => setJackpotHelp(true)}>
               💰 <TokenValue amount={pool.jackpotBalance} />

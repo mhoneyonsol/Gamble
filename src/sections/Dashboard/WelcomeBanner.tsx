@@ -62,7 +62,6 @@ const Welcome = styled.div`
     background-image: url(https://i.imgur.com/ToeEATM.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: rgb(255, 255, 255);
     animation: auto ease 0s 1 normal none running none;
     background-position-x: 57%;
     color: white;
